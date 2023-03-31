@@ -41,7 +41,9 @@ test_that("checkInputFormat() checks AxC values.", {
   temp_db[4, 2] <- "non convertible to numeric"
   db_ok <- checkInputFormat(temp_db)
   expect_equal(db_ok,
-              "Error: Check Aternatives x Criteria values, all must be numeric")
+               "Error: Check Aternatives x Criteria values, all must be numeric")
+  temp_db[4, 2] <- NA
+  expect_error(checkInputFormat(temp_db))
 })
 
 test_that("checkInputFormat() checks parm waspas_df is missing.", {
